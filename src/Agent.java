@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * Created by Malomek on 21/01/2018.
  */
-public class Agent {
+public class Agent implements Runnable{
 
     public Set objectifs;  //Le but de la vie de notre agent est d'accomplir au moins une fois chacun des objectifs que nous avons créé
 
@@ -31,7 +31,7 @@ public class Agent {
     }
 
 
-    public static void main (String[] args) throws InterruptedException {
+    public void run(){
 
         Agent agent = new Agent();
 
@@ -40,7 +40,11 @@ public class Agent {
             Random rand = new Random();
             int  n = rand.nextInt(3) + 1;
 
-            agent.agit(n);
+            try {
+                agent.agit(n);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             agent.objectifs.remove(n);    //ici l'agent retire le numéro d'objectif de sa liste à faire (s'il n'est pas déjà enlevé)
 
         }
