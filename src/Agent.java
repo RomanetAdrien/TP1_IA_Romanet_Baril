@@ -8,13 +8,17 @@ import java.util.Set;
 public class Agent implements Runnable{
 
     public Set objectifs;  //Le but de la vie de notre agent est d'accomplir au moins une fois chacun des objectifs que nous avons créé
+    public boolean isAlive;
+    public Environnement environnement;
 
 
-    public Agent(){
+    public Agent(Environnement env){
+        this.isAlive = true;
         this.objectifs = new HashSet();
         this.objectifs.add(1);
         this.objectifs.add(2);
         this.objectifs.add(3);
+        this.environnement=env;
 
     }
 
@@ -33,19 +37,28 @@ public class Agent implements Runnable{
 
     public void run(){
 
-        Agent agent = new Agent();
 
-        while(!agent.objectifs.isEmpty()){        //La boucle fera travailler l'agent jusqu'à ce que sa liste d'objectifs à faire soit vide
+        while(!this.objectifs.isEmpty()){        //La boucle fera travailler l'agent jusqu'à ce que sa liste d'objectifs à faire soit vide
+            if(this.environnement.GetState()==1){
+                Random rand = new Random();
+                int  n = rand.nextInt(3) + 1;
 
-            Random rand = new Random();
-            int  n = rand.nextInt(3) + 1;
-
-            try {
-                agent.agit(n);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                try {
+                    this.agit(n);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                this.objectifs.remove(n);    //ici l'agent retire le numéro d'objectif de sa liste à faire (s'il n'est pas déjà enlevé)
             }
-            agent.objectifs.remove(n);    //ici l'agent retire le numéro d'objectif de sa liste à faire (s'il n'est pas déjà enlevé)
+            else{
+                System.out.println("Environnement hostile ! On annule tout !");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
 
         }
 

@@ -5,9 +5,10 @@ public class main {
 
     public static void main (String[] args){
         // Create Environnement and Start it
-        Thread env = new Thread(new Environnement(1));
-        env.start();
-        Thread agent = new Thread(new Agent());
+        Environnement env = new Environnement(1);
+        Thread tEnv = new Thread(env);
+        tEnv.start();
+        Thread agent = new Thread(new Agent(env));
         agent.run();
     }
 }
