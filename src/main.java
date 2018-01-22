@@ -7,5 +7,7 @@ public class main {
         // Create Environnement and Start it
         Thread env = new Thread(new Environnement(1));
         env.start();
+        Thread agent = new Thread(new Agent());
+        agent.run();
     }
 }
