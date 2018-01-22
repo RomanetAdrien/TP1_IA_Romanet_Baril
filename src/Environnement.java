@@ -31,8 +31,14 @@ public class Environnement implements Runnable{
             // 90% chance of OK
             // 10% chance of DANGER
             if (ThreadLocalRandom.current().nextInt(1, 10 + 1) <= 1) {
+                if(state == 1){
+                    System.out.print("State Changed -> DANGER\n");
+                }
                 state = 0;
             } else {
+                if(state == 0) {
+                    System.out.print("State Changed -> OK\n");
+                }
                 state = 1;
             }
         }
