@@ -9,7 +9,7 @@ public class Agent implements Runnable{
 
     public Set objective;  //Le but de la vie de notre agent est d'accomplir au moins une fois chacun des objectifs que nous avons créé
     public boolean isAlive;
-    public Environnement environnement;
+    public Environnement environnement; //Lien avec l'environnement dans lequel l'agent évolu pour suivre son statut
 
 
     public Agent(Environnement env){
@@ -87,6 +87,7 @@ public class Agent implements Runnable{
         else{
             System.out.println("Tous les objective ont été accomplis ! ");
         }
+        return;
 
 
     }

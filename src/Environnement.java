@@ -19,16 +19,18 @@ public class Environnement implements Runnable{
 
 
     public void run() {
+        // Environment is always active
         while (true) {
             try {
+                // Possible change of state every 0.5seconds
                 Thread.sleep(500);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             // Randomizing next State
-            // 80% chance of OK
-            // 20% chance of DANGER
-            if (ThreadLocalRandom.current().nextInt(1, 10 + 1) <= 2) {
+            // 90% chance of OK
+            // 10% chance of DANGER
+            if (ThreadLocalRandom.current().nextInt(1, 10 + 1) <= 1) {
                 state = 0;
             } else {
                 state = 1;
