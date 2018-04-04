@@ -14,6 +14,10 @@
           <option name="url" value="https://github.com/Aerlai/UQAC_8INF957_TP2_GALL_ROMANET.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/RomanetAdrien/LogicielMessagerieInstantaneDistribue.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Malomek\IdeaProjects" />
